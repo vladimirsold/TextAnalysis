@@ -1,24 +1,26 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace TextAnalysis
 {
     static class TextGenerator
     {
-        static string GetNextWord(List<string> phrase, Dictionary<string, string> nextWords)
+        public static string GetNextWord(List<string> phrase,
+                                         Dictionary<string, string> nextWords)
         {
             int count = phrase.Count;
             string key;
-            if (count > 1)
+            if(count > 1)
             {
                 key = phrase[count - 2] + " " + phrase[count - 1];
-                if (nextWords.ContainsKey(key))
+                if(nextWords.ContainsKey(key))
                 {
                     return nextWords[key];
                 }
             }
             key = phrase[count - 1];
-            if (nextWords.ContainsKey(key))
+            if(nextWords.ContainsKey(key))
             {
                 return nextWords[key];
             }
@@ -33,7 +35,7 @@ namespace TextAnalysis
             string phraseBeginning,
             int wordsCount)
         {
-            var phrase = phraseBeginning.Split(' ').ToList();
+            var phrase = new List<string>(phraseBeginning.Split(' '));
             for (var addedWord = 0; addedWord < wordsCount; addedWord++)
             {
                 var nextWord = GetNextWord(phrase, nextWords);

@@ -11,9 +11,10 @@ namespace TextAnalysis
             var text = File.ReadAllText("HarryPotterText.txt");
             var sentences = text
                 .Split('.')
-                .Select(sentence => sentence.Split(new char[]{' '}, StringSplitOptions.RemoveEmptyEntries).ToList())
+                .Select(sentence => sentence.Split(new char[] { ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                .Select(word => word.ToLower()).ToList())
                 .ToList();
-            var frequency = FrequencyAnalysis.GetMostFrequentNextWords(sentences); 
+            var frequency = FrequencyAnalysis.GetMostFrequentNextWords(sentences);
             while (true)
             {
                 Console.Write("Введите первое слово (например, harry): ");

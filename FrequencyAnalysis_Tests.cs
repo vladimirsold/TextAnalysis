@@ -8,6 +8,13 @@ namespace TextAnalysis
     [TestFixture]
     public class FrequencyAnalysis_Tests
     {
+        public List<List<string>> ParseText(string text)
+        {
+            return text.Split('.')
+                .Select(sentence => sentence.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList())
+                .ToList();
+        }
+
         [Test]
         [Order(00)]
         public void ReturnEmptyDictionary_OnEmptyText()
@@ -130,7 +137,7 @@ namespace TextAnalysis
         [Order(60)]
         public void ReturnPairForEveryBigram([Values("x y. y z.", "y z. x y.")] string text)
         {
-            var parsedText = SentencesParser.ParseSentences(text);
+            var parsedText = ParseText(text);
             var expected = new Dictionary<string, string>
             {
                 {"x", "y"},
@@ -142,13 +149,6 @@ namespace TextAnalysis
             AssertResult(expected, actual, text);
         }
 
-        // Упрощённый парсинг текста
-        public List<List<string>> ParseText(string text)
-        {
-            return text.Split('.')
-                .Select(sentence => sentence.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).ToList())
-                .ToList();
-        }
 
         public static void AssertResult(
             Dictionary<string, string> expected,
