@@ -12,7 +12,7 @@ namespace TextAnalysis
         [Order(00)]
         public void ContinuePhrase_DoNothing_OnEmptyDictionary(string phraseStart, int phraseWordsCount)
         {
-            var actual = TextGeneratorTask.ContinuePhrase(
+            var actual = TextGenerator.ContinuePhrase(
                 new Dictionary<string, string>(),
                 phraseStart,
                 phraseWordsCount);
@@ -29,7 +29,7 @@ namespace TextAnalysis
             };
 
             var actual =
-                TextGeneratorTask.ContinuePhrase(mostFrequentNextWords, "x", 0);
+                TextGenerator.ContinuePhrase(mostFrequentNextWords, "x", 0);
             Assert.AreEqual("x", actual);
         }
 
@@ -54,7 +54,7 @@ namespace TextAnalysis
             };
 
             var actual =
-                TextGeneratorTask.ContinuePhrase(mostFrequentNextWords, phraseBeginning, 2);
+                TextGenerator.ContinuePhrase(mostFrequentNextWords, phraseBeginning, 2);
             Assert.AreEqual(phraseBeginning + " " + expectedNextWord, actual);
         }
 
@@ -81,7 +81,7 @@ namespace TextAnalysis
             };
 
             var actual =
-                TextGeneratorTask.ContinuePhrase(mostFrequentNextWords, phraseBeginning, wordsCount);
+                TextGenerator.ContinuePhrase(mostFrequentNextWords, phraseBeginning, wordsCount);
             Assert.AreEqual(expectedResult, actual);
         }
 
@@ -105,7 +105,7 @@ namespace TextAnalysis
             };
 
             var actual =
-                TextGeneratorTask.ContinuePhrase(mostFrequentNextWords, phraseBeginning, 1);
+                TextGenerator.ContinuePhrase(mostFrequentNextWords, phraseBeginning, 1);
             Assert.AreEqual(phraseBeginning + " " + expectedNextWord, actual);
         }
 
@@ -121,7 +121,7 @@ namespace TextAnalysis
             };
 
             var actual =
-                TextGeneratorTask.ContinuePhrase(mostFrequentNextWords, "x", 4);
+                TextGenerator.ContinuePhrase(mostFrequentNextWords, "x", 4);
             Assert.AreEqual("x y z", actual);
         }
 
@@ -144,7 +144,7 @@ namespace TextAnalysis
             };
 
             var actual =
-                TextGeneratorTask.ContinuePhrase(mostFrequentNextWords, phraseBeginning, 1);
+                TextGenerator.ContinuePhrase(mostFrequentNextWords, phraseBeginning, 1);
             var expected = string.IsNullOrEmpty(expectedNextWord) ? phraseBeginning : phraseBeginning + " " + expectedNextWord;
             Assert.AreEqual(expected, actual);
         }
@@ -169,7 +169,7 @@ namespace TextAnalysis
                 {"z", "y"},
             };
             var actual =
-                TextGeneratorTask.ContinuePhrase(mostFrequentNextWords, phraseBeginning, wordsCount);
+                TextGenerator.ContinuePhrase(mostFrequentNextWords, phraseBeginning, wordsCount);
 
             Assert.AreEqual(expectedResult, actual);
         }

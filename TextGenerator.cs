@@ -1,11 +1,11 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace TextAnalysis
 {
-    static class TextGeneratorTask
+    static class TextGenerator
     {
-        public static string GetNextWord(List<string> phrase,
-                                         Dictionary<string, string> nextWords)
+        static string GetNextWord(List<string> phrase, Dictionary<string, string> nextWords)
         {
             int count = phrase.Count;
             string key;
@@ -33,7 +33,7 @@ namespace TextAnalysis
             string phraseBeginning,
             int wordsCount)
         {
-            var phrase = new List<string>(phraseBeginning.Split(' '));
+            var phrase = phraseBeginning.Split(' ').ToList();
             for (var addedWord = 0; addedWord < wordsCount; addedWord++)
             {
                 var nextWord = GetNextWord(phrase, nextWords);

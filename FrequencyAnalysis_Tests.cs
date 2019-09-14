@@ -16,7 +16,7 @@ namespace TextAnalysis
             var parsedText = ParseText(text);
             var expected = new Dictionary<string, string>();
 
-            var actual = FrequencyAnalysisTask.GetMostFrequentNextWords(parsedText);
+            var actual = FrequencyAnalysis.GetMostFrequentNextWords(parsedText);
 
             AssertResult(expected, actual, text);
         }
@@ -29,7 +29,7 @@ namespace TextAnalysis
             var parsedText = ParseText(text);
             var expected = new Dictionary<string, string>();
 
-            var actual = FrequencyAnalysisTask.GetMostFrequentNextWords(parsedText);
+            var actual = FrequencyAnalysis.GetMostFrequentNextWords(parsedText);
 
             AssertResult(expected, actual, text);
         }
@@ -45,7 +45,7 @@ namespace TextAnalysis
                 {"x", "y"}
             };
 
-            var actual = FrequencyAnalysisTask.GetMostFrequentNextWords(parsedText);
+            var actual = FrequencyAnalysis.GetMostFrequentNextWords(parsedText);
 
             AssertResult(expected, actual, text);
         }
@@ -63,7 +63,7 @@ namespace TextAnalysis
                 {"x y", "z"}
             };
 
-            var actual = FrequencyAnalysisTask.GetMostFrequentNextWords(parsedText);
+            var actual = FrequencyAnalysis.GetMostFrequentNextWords(parsedText);
 
             AssertResult(expected, actual, text);
         }
@@ -76,7 +76,7 @@ namespace TextAnalysis
             var parsedText = ParseText(text);
             var expected = new Dictionary<string, string>();
 
-            var actual = FrequencyAnalysisTask.GetMostFrequentNextWords(parsedText);
+            var actual = FrequencyAnalysis.GetMostFrequentNextWords(parsedText);
 
             AssertResult(expected, actual, text);
         }
@@ -92,7 +92,7 @@ namespace TextAnalysis
                 {"x", "y"}
             };
 
-            var actual = FrequencyAnalysisTask.GetMostFrequentNextWords(parsedText);
+            var actual = FrequencyAnalysis.GetMostFrequentNextWords(parsedText);
 
             AssertResult(expected, actual, text);
         }
@@ -109,7 +109,7 @@ namespace TextAnalysis
                 {"x", "y"}
             };
 
-            var actual = FrequencyAnalysisTask.GetMostFrequentNextWords(parsedText);
+            var actual = FrequencyAnalysis.GetMostFrequentNextWords(parsedText);
 
             AssertResult(expected, actual, text);
         }
@@ -121,7 +121,7 @@ namespace TextAnalysis
             var parsedText = ParseText(text);
             var expected = new Dictionary<string, string>();
 
-            var actual = FrequencyAnalysisTask.GetMostFrequentNextWords(parsedText);
+            var actual = FrequencyAnalysis.GetMostFrequentNextWords(parsedText);
 
             AssertResult(expected, actual, text);
         }
@@ -130,14 +130,14 @@ namespace TextAnalysis
         [Order(60)]
         public void ReturnPairForEveryBigram([Values("x y. y z.", "y z. x y.")] string text)
         {
-            var parsedText = ParseText(text);
+            var parsedText = SentencesParser.ParseSentences(text);
             var expected = new Dictionary<string, string>
             {
                 {"x", "y"},
                 {"y", "z"}
             };
 
-            var actual = FrequencyAnalysisTask.GetMostFrequentNextWords(parsedText);
+            var actual = FrequencyAnalysis.GetMostFrequentNextWords(parsedText);
 
             AssertResult(expected, actual, text);
         }

@@ -4,7 +4,7 @@ using System.Linq;
 
 namespace TextAnalysis
 {
-    static class FrequencyAnalysisTask
+    static class FrequencyAnalysis
     {
         public static Dictionary<string, string> GetMostFrequentNextWords(List<List<string>> text)
         {

@@ -51,6 +51,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TextGenerator.cs" />
     <Compile Include="TextGenerator_Tests.cs" />
     <Compile Include="FrequencyAnalysis_Tests.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -58,11 +59,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="FrequencyAnalysisTask.cs" />
-    <Compile Include="TextGeneratorTask.cs" />
-    <Compile Include="SentencesParser_Tests.cs" />
+    <Compile Include="FrequencyAnalysis.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="SentencesParserTask.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
